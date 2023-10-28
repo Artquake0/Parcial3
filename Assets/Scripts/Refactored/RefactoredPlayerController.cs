@@ -12,8 +12,10 @@ public class RefactoredPlayerController : PlayerControllerBase
 
     public static RefactoredPlayerController Instance;
 
-    public event GameOverDelegate OnGameOver;
-    public event ProcessShot OnShot;
+    public delegate void GameOverDelegate();
+    public delegate void ShotDelegate ();
+    public event GameOverDelegate GameOver;
+    public event ShotDelegate OnShot;
 
     void Awake()
     {
@@ -33,7 +35,7 @@ public class RefactoredPlayerController : PlayerControllerBase
 
             if (Physics.Raycast(ray, out hit, MaxShotDistance))
             {
-                playerController.ProcessShot(hit.point);
+                RefactoredGameController.Instance.ProcessShot(hit.point);
             }
 
             ShotsRemaining--;
@@ -45,4 +47,8 @@ public class RefactoredPlayerController : PlayerControllerBase
         }
     }
 
+    protected override void ProcessShot(Vector3 point)
+    {
+        throw new System.NotImplementedException();
+    }
 }
