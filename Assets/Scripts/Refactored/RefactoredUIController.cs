@@ -9,6 +9,7 @@ public class RefactoredUIController : UIControllerBase
     public Text ShotsRemainingText;
     public GameObject GameOverOverlay;
 
+
     void OnEnable()
     {
         RefactoredPlayerController.Instance.GameOver += HandleGameOver;
@@ -28,7 +29,7 @@ public class RefactoredUIController : UIControllerBase
 
     void HandleShot()
     {
-        int score = GameController.GetScore();
+        int score = GameController.Score();
         int shotsRemaining = RefactoredPlayerController.Instance.ShotsRemaining;
 
         ScoreText.text = $"Score: {score}";
