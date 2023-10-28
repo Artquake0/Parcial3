@@ -42,7 +42,7 @@ public class RefactoredPlayerController : PlayerControllerBase
 
             if (ShotsRemaining <= 0)
             {
-                OnGameOver?.Invoke();
+                GameOver?.Invoke();
             }
         }
     }
